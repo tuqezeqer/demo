@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haqqımızda — Lafromed Healthcare</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+
+  <!-- ── HEADER TOP (not sticky, scrolls away) ──────────── -->
+  <header class="header-top">
+    <div class="header-top-inner">
+      <a href="index.html" class="logo">
+        <img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img logo-desktop" /><img src="uploads/logo_mobile.svg" alt="Lafromed Healthcare" class="logo-img logo-mobile" />
+      </a>
+      <div class="header-top-right">
+        <div class="header-search">
+          <input type="text" placeholder="Axtarış..." data-i18n-placeholder="header_search_placeholder" class="header-search-input" />
+          <button class="header-search-btn" aria-label="Axtar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <div class="header-actions">
+          <div class="header-lang" id="langToggle">
+            <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlag" />
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+              <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+              <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+            </div>
+          </div>
+          <a href="login.html" class="header-login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="header_cabinet">Kabinet</span>
+          </a>
+        </div>
+      </div>
+      <!-- Mobile actions -->
+      <div class="header-mobile-actions">
+        <div class="header-lang" id="langToggleMob">
+          <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlagMob" />
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="lang-dropdown" id="langDropdownMob">
+            <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+            <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+            <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+          </div>
+        </div>
+        <button class="mobile-icon-btn" id="mobileSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── SPOTLIGHT SEARCH OVERLAY ──────────────────────── -->
+  <div class="spotlight-overlay" id="spotlightOverlay">
+    <div class="spotlight-backdrop" id="spotlightBackdrop"></div>
+    <div class="spotlight-box">
+      <div class="spotlight-input-wrap">
+        <svg class="spotlight-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Axtarış..." data-i18n-placeholder="header_search_placeholder" autocomplete="off" />
+        <button class="spotlight-search-btn" id="spotlightSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HEADER NAV (sticky — only this sticks on scroll) ── -->
+  <nav class="header-nav" id="headerNav">
+    <div class="header-nav-inner">
+      <div class="header-nav-links">
+        <a href="index.html" class="nav-item" data-i18n="nav_home">Əsas Səhifə</a>
+        <a href="about.html" class="nav-item active-nav"data-i18n="nav_about">Haqqımızda</a>
+        <a href="departments.html" class="nav-item"data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+        <a href="doctors.html" class="nav-item"data-i18n="nav_doctors">Həkimlərimiz</a>
+        <a href="#" class="nav-item"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
+        <a href="#" class="nav-item"data-i18n="nav_appointment">E-randevu</a>
+        <a href="#" class="nav-item"data-i18n="nav_contact">Əlaqə</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE SLIDE-IN MENU (right side) ─────────── -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-top">
+      <button class="mobile-menu-close" id="mobileClose" aria-label="Bağla">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+<nav class="mobile-menu-links">
+      <a href="index.html" class="mob-link">Əsas Səhifə</a>
+      <a href="about.html" class="mob-link"data-i18n="nav_about">Haqqımızda</a>
+      <a href="departments.html" class="mob-link"data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+      <a href="doctors.html" class="mob-link"data-i18n="nav_doctors">Həkimlərimiz</a>
+      <a href="#" class="mob-link"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
+      <a href="#" class="mob-link"data-i18n="nav_appointment">E-randevu</a>
+      <a href="#" class="mob-link"data-i18n="nav_contact">Əlaqə</a>
+      <div class="mob-divider"></div>
+      <a href="login.html" class="mob-link mob-cabinet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Kabinet
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── BREADCRUMB ──────────────────────────────────────── -->
+  <div class="about-breadcrumb">
+    <div class="about-breadcrumb-inner">
+      <a href="index.html">Əsas səhifə</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Haqqımızda</span>
+    </div>
+  </div>
+
+  <!-- ── PAGE HERO ─────────────────────────────────────── -->
+  <section class="about-hero">
+    <div class="about-hero-bg">
+      <div class="about-hero-pattern"></div>
+    </div>
+    <div class="about-hero-content">
+      <h1 class="about-hero-title">Sağlamlığınız üçün<br/>güvəndiyiniz ad.</h1>
+      <p class="about-hero-desc">2025-ci ildən bəri Azərbaycanda müasir tibbi xidmətlər göstərən Lafromed Premium Klinika, hər xəstəyə fərdi yanaşma və yüksək keyfiyyətli müalicə təmin edir.</p>
+    </div>
+  </section>
+
+  <!-- ── OUR STORY ───────────────────────────────────────── -->
+  <section class="about-story">
+    <div class="about-story-inner">
+      <div class="about-story-text">
+        <span class="section-tag">Bizim Hekayəmiz</span>
+        <h2 class="about-story-title">Premium keyfiyyət,<br/>fərdi yanaşma.</h2>
+        <p>Lafromed Premium Klinika, 2009-cu ildə Bakıda təsis olunmuşdur. Missiyamız hər xəstəyə fərdi yanaşma ilə ən yüksək keyfiyyətdə tibbi xidmət göstərməkdir.</p>
+        <p>Müasir texnologiyalar, beynəlxalq standartlar və təcrübəli həkim heyəti ilə xəstələrimizin sağlamlığını qorumaq üçün çalışırıq.</p>
+      </div>
+      <div class="about-story-img">
+        <img src="uploads/about/clinic-outside.jpg" alt="Lafromed Klinika" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUES ──────────────────────────────────────────── -->
+  <section class="about-values">
+    <div class="about-values-inner">
+      <div class="section-header">
+        <span class="section-tag">Dəyərlərimiz</span>
+        <h2>Hər addımda prinsiplərimizlə.</h2>
+        <p class="section-desc">Lafromed olaraq bütün fəaliyyətimizi əsas dəyərlərimiz üzərində qururuq.</p>
+      </div>
+      <div class="about-values-grid">
+        <div class="about-value-card">
+          <div class="about-value-num">01</div>
+          <h3>Etibar</h3>
+          <p>Xəstələrimizlə şəffaf ünsiyyət qurur, hər qərarı birlikdə alırıq.</p>
+        </div>
+        <div class="about-value-card">
+          <div class="about-value-num">02</div>
+          <h3>Peşəkarlıq</h3>
+          <p>Həkimlərimiz daima özlərini inkişaf etdirir, ən son tibbi yenilikləri tətbiq edir.</p>
+        </div>
+        <div class="about-value-card">
+          <div class="about-value-num">03</div>
+          <h3>İnnovasiya</h3>
+          <p>Müasir tibb texnologiyalarını tətbiq edərək prosesləri daim təkmilləşdiririk.</p>
+        </div>
+        <div class="about-value-card">
+          <div class="about-value-num">04</div>
+          <h3>Şəfqət</h3>
+          <p>Hər xəstəyə ailə üzvümüz kimi yanaşırıq. İnsan sağlamlığı ən böyük dəyərdir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATES ────────────────────────────────────── -->
+  <section class="about-certs">
+    <div class="about-certs-inner">
+      <div class="section-header">
+        <span class="section-tag">Keyfiyyət və Sertifikatlar</span>
+        <h2>Beynəlxalq standartlara uyğun xidmət</h2>
+      </div>
+      <div class="about-certs-grid">
+        <div class="about-cert-card">
+          <div class="about-cert-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M8 14l-2 8 6-3 6 3-2-8"/></svg>
+          </div>
+          <h3>JCI Akkreditasiya</h3>
+          <p>Beynəlxalq Birgə Komissiya tərəfindən verilən keyfiyyət sertifikatı.</p>
+        </div>
+        <div class="about-cert-card">
+          <div class="about-cert-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <h3>ISO 9001</h3>
+          <p>Laboratoriya və klinik proseslərdə ISO standartlarına tam uyğunluq.</p>
+        </div>
+        <div class="about-cert-card">
+          <div class="about-cert-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Səhiyyə Nazirliyi Lisenziyası</h3>
+          <p>Azərbaycan Respublikası tərəfindən tam lisenziyalı fəaliyyət.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOCTORS PREVIEW ─────────────────────────────────── -->
+  <section class="about-doctors">
+    <div class="about-doctors-inner">
+      <div class="section-header">
+        <span class="section-tag">Həkimlərimiz</span>
+        <h2>Təcrübəli həkimlərimiz</h2>
+        <p class="section-desc">Sahələrində peşəkar həkimlərimiz sağlamlığınız üçün hər zaman yanınızdadır.</p>
+      </div>
+      <div class="about-doctors-grid">
+        <a href="#" class="doctor-card">
+          <div class="doctor-photo"><img src="uploads/doctors/jafar-ahmadli.jpg" alt="Dr. Cəfər Əhmədli" /></div>
+          <div class="doctor-info"><h3>Dr. Cəfər Əhmədli</h3><span class="doctor-specialty">Uroloq / Androloq</span></div>
+        </a>
+        <a href="#" class="doctor-card">
+          <div class="doctor-photo"><img src="uploads/doctors/munavvar-hasanova.jpg" alt="Dr. Münəvvər Həsənova" /></div>
+          <div class="doctor-info"><h3>Dr. Münəvvər Həsənova</h3><span class="doctor-specialty">Pediatr</span></div>
+        </a>
+        <a href="#" class="doctor-card">
+          <div class="doctor-photo"><img src="uploads/doctors/elkhan-aliyev.jpg" alt="Dr. Elxan Əliyev" /></div>
+          <div class="doctor-info"><h3>Dr. Elxan Əliyev</h3><span class="doctor-specialty">Terapevt</span></div>
+        </a>
+        <a href="#" class="doctor-card">
+          <div class="doctor-photo"><img src="uploads/doctors/rufat-jabbarli.jpg" alt="Dr. Rüfət Cabbarlı" /></div>
+          <div class="doctor-info"><h3>Dr. Rüfət Cabbarlı</h3><span class="doctor-specialty">Uzman Fizioterapevt</span></div>
+        </a>
+      </div>
+      <div class="about-doctors-cta">
+        <a href="doctors.html" class="doctors-all-btn">Bütün Həkimləri Gör &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img footer-logo-img" /></div>
+        <p data-i18n="footer_desc">Saglamliginiz ucun etibarlı, herterefli ve muasir tibbi xidmetler gosteririk.</p>
+        <p class="footer-phone"><strong>+994 12 123 45 67</strong></p>
+      </div>
+      <div class="footer-links"><h4 data-i18n="footer_corporate">Korporativ</h4><a href="#"data-i18n="footer_about">Haqqimizda</a><a href="#"data-i18n="footer_mission">Missiya &amp; Vizyon</a><a href="#"data-i18n="footer_career">Karyera</a><a href="#"data-i18n="footer_contact">Elaqe</a></div>
+      <div class="footer-links"><h4 data-i18n="footer_services">Xidmetler</h4><a href="#"data-i18n="footer_emergency">Tecili Yardim</a><a href="#"data-i18n="footer_clinics">Poliklinikalar</a><a href="#"data-i18n="footer_laboratory">Laboratoriya</a><a href="#"data-i18n="footer_pharmacy">Aptek</a></div>
+      <div class="footer-links"><h4 data-i18n="footer_patient">Xeste</h4><a href="#"data-i18n="footer_online_appointment">Onlayn Randevu</a><a href="#"data-i18n="footer_patient_rights">Xeste Huquqlari</a><a href="#"data-i18n="footer_privacy">Mexfilik Siyaseti</a><a href="#"data-i18n="footer_faq">Tez-tez Sorusulanlar</a></div>
+    </div>
+    <div class="footer-bottom"><p data-i18n-html="footer_copyright">&copy; 2024 Lafromed Healthcare. Butun huquqlar qorunur.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+</body>
+</html>

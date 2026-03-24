@@ -1,0 +1,270 @@
+/* ============================================================
+   LAFROMED HEALTHCARE — doctors.css (Həkimlərimiz)
+   ============================================================ */
+
+/* ── Breadcrumb ───────────────────────────────────────── */
+.doctors-breadcrumb { background: var(--gray-50); border-bottom: 1px solid var(--gray-100); }
+.doctors-breadcrumb-inner { max-width: 1400px; margin: 0 auto; padding: 14px 40px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-500); }
+.doctors-breadcrumb-inner a { color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+.doctors-breadcrumb-inner a:hover { color: var(--green-main); }
+.doctors-breadcrumb-inner svg { color: var(--gray-300); }
+.doctors-breadcrumb-inner span { color: var(--gray-900); font-weight: 600; }
+
+/* ── Page Hero (colorful) ─────────────────────────────── */
+.doctors-hero {
+  position: relative;
+  margin: 0 20px;
+  border-radius: var(--radius-lg);
+  padding: 80px 60px 70px;
+  overflow: hidden;
+  background: var(--green-deep);
+  animation: docFadeUp 0.5s ease both;
+}
+.doctors-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2a3c2b 0%, #3d5a3e 40%, #4a6a4c 100%);
+}
+.doctors-hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(196,162,101,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(138,154,123,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(255,255,255,0.02) 0%, transparent 40%);
+}
+.doctors-hero-pattern::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.doctors-hero-pattern::after {
+  content: '';
+  position: absolute;
+  bottom: -30%; left: -10%;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,162,101,0.06);
+}
+.doctors-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1325px;
+  margin: 0 auto;
+}
+.doctors-hero-title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+.doctors-hero-desc {
+  font-size: 17px;
+  color: rgba(255,255,255,0.6);
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+/* ── Page Section ─────────────────────────────────────── */
+.doctors-page-section {
+  padding: 0 40px 80px;
+  background: var(--white);
+}
+.doctors-page-container {
+  max-width: 1325px;
+  margin: 0 auto;
+}
+
+/* ── Filter Bar ───────────────────────────────────────── */
+.doctors-filter-bar {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  animation: docFadeUp 0.5s ease 0.1s both;
+}
+.doctors-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  max-width: 400px;
+  padding: 14px 20px;
+  border: 1.5px solid var(--gray-100);
+  border-radius: 14px;
+  background: var(--gray-50);
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+.doctors-search-wrap:focus-within {
+  border-color: var(--green-main);
+  background: var(--white);
+  box-shadow: 0 0 0 4px var(--green-light);
+}
+.doctors-search-wrap svg { color: var(--gray-300); flex-shrink: 0; }
+.doctors-search-wrap:focus-within svg { color: var(--green-main); }
+.doctors-search-wrap input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--gray-900);
+}
+.doctors-search-wrap input::placeholder { color: var(--gray-300); }
+
+.doctors-dept-filter select {
+  padding: 14px 20px;
+  border: 1.5px solid var(--gray-100);
+  border-radius: 14px;
+  background: var(--gray-50);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--gray-700);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.25s;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+.doctors-dept-filter select:focus {
+  border-color: var(--green-main);
+}
+
+/* ── Doctors Grid ─────────────────────────────────────── */
+.doctors-page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  animation: docFadeUp 0.5s ease 0.2s both;
+}
+
+/* ── Doctor Card ──────────────────────────────────────── */
+.doc-card {
+  display: block;
+  text-decoration: none;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+  transition: transform 0.35s, box-shadow 0.35s;
+  cursor: pointer;
+}
+.doc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(61, 90, 62, 0.12);
+}
+.doc-photo {
+  width: 100%;
+  aspect-ratio: 3 / 3.5;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+.doc-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.doc-card:hover .doc-photo img {
+  transform: scale(1.05);
+}
+.doc-info {
+  padding: 20px 22px 24px;
+  text-align: center;
+}
+.doc-info h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 6px;
+}
+.doc-dept {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--green-main);
+}
+
+/* ── No Results ───────────────────────────────────────── */
+.doctors-no-results {
+  text-align: center;
+  padding: 56px 20px;
+  color: var(--gray-400);
+  font-size: 15px;
+}
+
+/* ── Animation ────────────────────────────────────────── */
+@keyframes docFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TABLET
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .doctors-breadcrumb-inner { padding: 14px 16px; }
+  .doctors-hero { margin: 0 10px; padding: 64px 40px 56px; }
+  .doctors-hero-title { font-size: 38px; }
+  .doctors-page-section { padding: 0 24px 64px; }
+  .doctors-page-grid { grid-template-columns: repeat(3, 1fr); }
+  .doctors-filter-bar { flex-wrap: wrap; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .doctors-breadcrumb-inner { padding: 12px 16px; font-size: 13px; }
+  .doctors-hero { margin: 0; border-radius: 0; padding: 56px 20px 48px; }
+  .doctors-hero-title { font-size: 32px; }
+  .doctors-hero-desc { font-size: 15px; color: rgba(255,255,255,0.55); }
+  .doctors-page-section { padding: 0 16px 48px; }
+  .doctors-page-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .doctors-filter-bar { flex-direction: column; }
+  .doctors-search-wrap { max-width: 100%; }
+  .doctors-dept-filter select { width: 100%; }
+  .doc-info { padding: 16px 14px 18px; }
+  .doc-info h3 { font-size: 15px; }
+  .doc-dept { font-size: 12.5px; }
+}
+
+/* ── Appointment Button on Photo ──────────────────────── */
+.doc-photo {
+  position: relative;
+}
+.doc-appointment {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+  color: var(--green-main);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s, background 0.3s, color 0.3s;
+  pointer-events: none;
+}
+.doc-card:hover .doc-appointment {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.doc-appointment:hover {
+  background: var(--green-main);
+  color: var(--white);
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Həkimlərimiz — Lafromed Healthcare</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="doctors.css" />
+</head>
+<body>
+
+
+  <!-- ── HEADER TOP (not sticky, scrolls away) ──────────── -->
+  <header class="header-top">
+    <div class="header-top-inner">
+      <a href="index.html" class="logo">
+        <img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img logo-desktop" /><img src="uploads/logo_mobile.svg" alt="Lafromed Healthcare" class="logo-img logo-mobile" />
+      </a>
+      <div class="header-top-right">
+        <div class="header-search">
+          <input type="text" placeholder="Axtarış..." data-i18n-placeholder="header_search_placeholder" class="header-search-input" />
+          <button class="header-search-btn" aria-label="Axtar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <div class="header-actions">
+          <div class="header-lang" id="langToggle">
+            <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlag" />
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+              <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+              <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+            </div>
+          </div>
+          <a href="login.html" class="header-login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="header_cabinet">Kabinet</span>
+          </a>
+        </div>
+      </div>
+      <!-- Mobile actions -->
+      <div class="header-mobile-actions">
+        <div class="header-lang" id="langToggleMob">
+          <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlagMob" />
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="lang-dropdown" id="langDropdownMob">
+            <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+            <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+            <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+          </div>
+        </div>
+        <button class="mobile-icon-btn" id="mobileSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── SPOTLIGHT SEARCH OVERLAY ──────────────────────── -->
+  <div class="spotlight-overlay" id="spotlightOverlay">
+    <div class="spotlight-backdrop" id="spotlightBackdrop"></div>
+    <div class="spotlight-box">
+      <div class="spotlight-input-wrap">
+        <svg class="spotlight-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Axtarış..." data-i18n-placeholder="header_search_placeholder" autocomplete="off" />
+        <button class="spotlight-search-btn" id="spotlightSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HEADER NAV (sticky — only this sticks on scroll) ── -->
+  <nav class="header-nav" id="headerNav">
+    <div class="header-nav-inner">
+      <div class="header-nav-links">
+        <a href="index.html" class="nav-item" data-i18n="nav_home">Əsas Səhifə</a>
+        <a href="about.html" class="nav-item"data-i18n="nav_about">Haqqımızda</a>
+        <a href="departments.html" class="nav-item"data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+        <a href="doctors.html" class="nav-item active-nav"data-i18n="nav_doctors">Həkimlərimiz</a>
+        <a href="#" class="nav-item"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
+        <a href="#" class="nav-item"data-i18n="nav_appointment">E-randevu</a>
+        <a href="#" class="nav-item"data-i18n="nav_contact">Əlaqə</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE SLIDE-IN MENU (right side) ─────────── -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-top">
+      <button class="mobile-menu-close" id="mobileClose" aria-label="Bağla">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+<nav class="mobile-menu-links">
+      <a href="index.html" class="mob-link">Əsas Səhifə</a>
+      <a href="about.html" class="mob-link"data-i18n="nav_about">Haqqımızda</a>
+      <a href="departments.html" class="mob-link"data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+      <a href="doctors.html" class="mob-link"data-i18n="nav_doctors">Həkimlərimiz</a>
+      <a href="#" class="mob-link"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
+      <a href="#" class="mob-link"data-i18n="nav_appointment">E-randevu</a>
+      <a href="#" class="mob-link"data-i18n="nav_contact">Əlaqə</a>
+      <div class="mob-divider"></div>
+      <a href="login.html" class="mob-link mob-cabinet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Kabinet
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── BREADCRUMB ──────────────────────────────────────── -->
+  <div class="doctors-breadcrumb">
+    <div class="doctors-breadcrumb-inner">
+      <a href="index.html">Əsas səhifə</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Həkimlərimiz</span>
+    </div>
+  </div>
+
+  <!-- ── PAGE HERO ─────────────────────────────────────── -->
+  <section class="doctors-hero">
+    <div class="doctors-hero-bg">
+      <div class="doctors-hero-pattern"></div>
+    </div>
+    <div class="doctors-hero-content">
+      <h1 class="doctors-hero-title">Təcrübəli və peşəkar<br/>həkim heyəti.</h1>
+      <p class="doctors-hero-desc">Sahələrində mütəxəssis həkimlərimiz sağlamlığınız üçün ən yaxşı müalicəni təmin edir.</p>
+    </div>
+  </section>
+
+  <!-- ── SEARCH + FILTER ─────────────────────────────────── -->
+  <section class="doctors-page-section">
+    <div class="doctors-page-container">
+      <div class="doctors-filter-bar">
+        <div class="doctors-search-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="doctorSearch" placeholder="Həkim axtar..." />
+        </div>
+        <div class="doctors-dept-filter">
+          <select id="doctorDeptFilter">
+            <option value="all">Bütün ixtisaslar</option>
+            <option value="Uroloq">Urologiya</option>
+            <option value="Pediatr">Pediatriya</option>
+            <option value="Terapevt">Terapiya</option>
+            <option value="Fizioterapevt">Fizioterapiya</option>
+            <option value="Kardioloq">Kardiologiya</option>
+            <option value="Nevroloq">Nevrologiya</option>
+            <option value="Ortoped">Ortopediya</option>
+            <option value="Dermatoloq">Dermatologiya</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ── DOCTORS GRID ──────────────────────────────────── -->
+      <div class="doctors-page-grid" id="doctorsGrid">
+
+        <a href="#" class="doc-card" data-name="Cəfər Əhmədli" data-dept="Uroloq">
+          <div class="doc-photo"><img src="uploads/doctors/jafar-ahmadli.jpg" alt="Dr. Cəfər Əhmədli" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Cəfər Əhmədli</h3>
+            <span class="doc-dept">Uroloq / Androloq</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Münəvvər Həsənova" data-dept="Pediatr">
+          <div class="doc-photo"><img src="uploads/doctors/munavvar-hasanova.jpg" alt="Dr. Münəvvər Həsənova" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Münəvvər Həsənova</h3>
+            <span class="doc-dept">Pediatr</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Elxan Əliyev" data-dept="Terapevt">
+          <div class="doc-photo"><img src="uploads/doctors/elkhan-aliyev.jpg" alt="Dr. Elxan Əliyev" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Elxan Əliyev</h3>
+            <span class="doc-dept">Terapevt</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Rüfət Cabbarlı" data-dept="Fizioterapevt">
+          <div class="doc-photo"><img src="uploads/doctors/rufat-jabbarli.jpg" alt="Dr. Rüfət Cabbarlı" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Rüfət Cabbarlı</h3>
+            <span class="doc-dept">Uzman Fizioterapevt</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Aysel Məmmədova" data-dept="Kardioloq">
+          <div class="doc-photo"><img src="uploads/doctors/placeholder.jpg" alt="Dr. Aysel Məmmədova" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Aysel Məmmədova</h3>
+            <span class="doc-dept">Kardioloq</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Tural Həsənov" data-dept="Nevroloq">
+          <div class="doc-photo"><img src="uploads/doctors/placeholder.jpg" alt="Dr. Tural Həsənov" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Tural Həsənov</h3>
+            <span class="doc-dept">Nevroloq</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Nigar Əliyeva" data-dept="Dermatoloq">
+          <div class="doc-photo"><img src="uploads/doctors/placeholder.jpg" alt="Dr. Nigar Əliyeva" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Nigar Əliyeva</h3>
+            <span class="doc-dept">Dermatoloq</span>
+          </div>
+        </a>
+
+        <a href="#" class="doc-card" data-name="Kamran İsmayılov" data-dept="Ortoped">
+          <div class="doc-photo"><img src="uploads/doctors/placeholder.jpg" alt="Dr. Kamran İsmayılov" /><span class="doc-appointment">Randevu al</span></div>
+          <div class="doc-info">
+            <h3>Dr. Kamran İsmayılov</h3>
+            <span class="doc-dept">Ortoped-Travmatoloq</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="doctors-no-results" id="doctorsNoResults" style="display:none;">
+        <p>Axtarışa uyğun həkim tapılmadı.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img footer-logo-img" /></div>
+        <p data-i18n="footer_desc">Saglamliginiz ucun etibarlı, herterefli ve muasir tibbi xidmetler gosteririk.</p>
+        <p class="footer-phone"><strong>+994 12 123 45 67</strong></p>
+      </div>
+      <div class="footer-links"><h4 data-i18n="footer_corporate">Korporativ</h4><a href="#"data-i18n="footer_about">Haqqimizda</a><a href="#"data-i18n="footer_mission">Missiya &amp; Vizyon</a><a href="#"data-i18n="footer_career">Karyera</a><a href="#"data-i18n="footer_contact">Elaqe</a></div>
+      <div class="footer-links"><h4 data-i18n="footer_services">Xidmetler</h4><a href="#"data-i18n="footer_emergency">Tecili Yardim</a><a href="#"data-i18n="footer_clinics">Poliklinikalar</a><a href="#"data-i18n="footer_laboratory">Laboratoriya</a><a href="#"data-i18n="footer_pharmacy">Aptek</a></div>
+      <div class="footer-links"><h4 data-i18n="footer_patient">Xeste</h4><a href="#"data-i18n="footer_online_appointment">Onlayn Randevu</a><a href="#"data-i18n="footer_patient_rights">Xeste Huquqlari</a><a href="#"data-i18n="footer_privacy">Mexfilik Siyaseti</a><a href="#"data-i18n="footer_faq">Tez-tez Sorusulanlar</a></div>
+    </div>
+    <div class="footer-bottom"><p data-i18n-html="footer_copyright">&copy; 2024 Lafromed Healthcare. Butun huquqlar qorunur.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+    const searchInput = document.getElementById('doctorSearch');
+    const deptFilter = document.getElementById('doctorDeptFilter');
+    const grid = document.getElementById('doctorsGrid');
+    const noResults = document.getElementById('doctorsNoResults');
+    const cards = grid.querySelectorAll('.doc-card');
+
+    function filterDoctors() {
+      const query = searchInput.value.trim().toLowerCase();
+      const dept = deptFilter.value;
+      let visible = 0;
+
+      cards.forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        const cardDept = card.dataset.dept;
+        const matchSearch = !query || name.includes(query);
+        const matchDept = dept === 'all' || cardDept === dept;
+
+        if (matchSearch && matchDept) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterDoctors);
+    deptFilter.addEventListener('change', filterDoctors);
+  </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qeydiyyat — Lafromed Healthcare</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <!-- ── HEADER TOP (not sticky, scrolls away) ──────────── -->
+  <header class="header-top">
+    <div class="header-top-inner">
+      <a href="index.html" class="logo">
+        <img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img logo-desktop" /><img src="uploads/logo_mobile.svg" alt="Lafromed Healthcare" class="logo-img logo-mobile" />
+      </a>
+      <div class="header-top-right">
+        <div class="header-search">
+          <input type="text" placeholder="Axtarış..." class="header-search-input" data-i18n-placeholder="header_search_placeholder" />
+          <button class="header-search-btn" aria-label="Axtar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <div class="header-actions">
+          <div class="header-lang" id="langToggle">
+            <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlag" />
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+              <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+              <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+            </div>
+          </div>
+          <a href="login.html" class="header-login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="header_cabinet">Kabinet</span>
+          </a>
+        </div>
+      </div>
+      <!-- Mobile actions -->
+      <div class="header-mobile-actions">
+        <div class="header-lang" id="langToggleMob">
+          <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlagMob" />
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="lang-dropdown" id="langDropdownMob">
+            <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+            <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+            <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+          </div>
+        </div>
+        <button class="mobile-icon-btn" id="mobileSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── SPOTLIGHT SEARCH OVERLAY ──────────────────────── -->
+  <div class="spotlight-overlay" id="spotlightOverlay">
+    <div class="spotlight-backdrop" id="spotlightBackdrop"></div>
+    <div class="spotlight-box">
+      <div class="spotlight-input-wrap">
+        <svg class="spotlight-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Axtarış..." autocomplete="off" />
+        <button class="spotlight-search-btn" id="spotlightSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HEADER NAV (sticky — only this sticks on scroll) ── -->
+  <nav class="header-nav" id="headerNav">
+    <div class="header-nav-inner">
+      <div class="header-nav-links">
+        <a href="index.html" class="nav-item" data-i18n="nav_home">Əsas Səhifə</a>
+        <a href="about.html" class="nav-item" data-i18n="nav_about">Haqqımızda</a>
+        <a href="departments.html" class="nav-item" data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+        <a href="doctors.html" class="nav-item" data-i18n="nav_doctors">Həkimlərimiz</a>
+        <a href="#" class="nav-item" data-i18n="nav_diseases">Xəstəliklər və müalicələr</a>
+        <a href="#" class="nav-item" data-i18n="nav_appointment">E-randevu</a>
+        <a href="#" class="nav-item" data-i18n="nav_contact">Əlaqə</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE SLIDE-IN MENU (right side) ─────────── -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-top">
+      <button class="mobile-menu-close" id="mobileClose" aria-label="Bağla">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+<nav class="mobile-menu-links">
+      <a href="index.html" class="mob-link">Əsas Səhifə</a>
+      <a href="about.html" class="mob-link">Haqqımızda</a>
+      <a href="departments.html" class="mob-link">Tibbi bölmələrimiz</a>
+      <a href="doctors.html" class="mob-link">Həkimlərimiz</a>
+      <a href="#" class="mob-link">Xəstəliklər və müalicələr</a>
+      <a href="#" class="mob-link">E-randevu</a>
+      <a href="#" class="mob-link">Əlaqə</a>
+      <div class="mob-divider"></div>
+      <a href="login.html" class="mob-link mob-cabinet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Kabinet
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── BREADCRUMB ──────────────────────────────────────── -->
+  <div class="auth-breadcrumb">
+    <div class="auth-breadcrumb-inner">
+      <a href="index.html">Əsas səhifə</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Qeydiyyat</span>
+    </div>
+  </div>
+
+  <!-- ── AUTH CONTENT ────────────────────────────────────── -->
+  <section class="auth-section">
+    <div class="auth-container">
+      <!-- Left: Register form -->
+      <div class="auth-card auth-card-main">
+        <h1 class="auth-card-title">Qeydiyyatdan keç</h1>
+        <p class="auth-card-desc">Bir neçə addımda hesab yaradın və onlayn xidmətlərimizdən yararlanın.</p>
+
+        <form class="auth-form" id="registerForm">
+          <div class="auth-field-row">
+            <div class="auth-field">
+              <label for="regName">Ad</label>
+              <div class="auth-input-wrap">
+                <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <input type="text" id="regName" placeholder="Adınız" required />
+              </div>
+            </div>
+            <div class="auth-field">
+              <label for="regSurname">Soyad</label>
+              <div class="auth-input-wrap">
+                <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <input type="text" id="regSurname" placeholder="Soyadınız" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="regEmail">E-mail</label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+              <input type="email" id="regEmail" placeholder="sizin@email.az" required />
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="regPassword">Şifrə</label>
+            <div class="auth-input-wrap">
+              <svg class="auth-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <input type="password" id="regPassword" placeholder="Minimum 8 simvol" required minlength="8" />
+              <button type="button" class="auth-toggle-pw" aria-label="Şifrəni göstər">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="auth-pw-strength"><div class="auth-pw-bar"><div class="auth-pw-fill" id="pwFill"></div></div></div>
+          </div>
+
+          <button type="submit" class="auth-submit-btn">Qeydiyyatdan keç</button>
+        </form>
+      </div>
+
+      <!-- Right: Login CTA with illustration -->
+      <div class="auth-card auth-card-side">
+        <div class="auth-side-illustration">
+          <svg viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="15" width="120" height="140" rx="14" fill="#e8ede4" stroke="#6b7f5e" stroke-width="2"/>
+            <rect x="58" y="40" width="84" height="10" rx="5" fill="#6b7f5e" opacity="0.2"/>
+            <rect x="58" y="60" width="84" height="10" rx="5" fill="#6b7f5e" opacity="0.15"/>
+            <rect x="58" y="80" width="84" height="10" rx="5" fill="#6b7f5e" opacity="0.2"/>
+            <rect x="58" y="100" width="84" height="10" rx="5" fill="#6b7f5e" opacity="0.15"/>
+            <rect x="70" y="122" width="60" height="22" rx="11" fill="#6b7f5e" opacity="0.85"/>
+            <path d="M92 133h16" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="155" cy="30" r="18" fill="#c4a265" opacity="0.15"/>
+            <path d="M148 30l5 5 10-10" stroke="#c4a265" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="auth-side-title">Saytda hesabınız var?</h2>
+        <p class="auth-side-desc">Daha öncə qeydiyyatdan keçmisinizsə, hesabınıza daxil olub xidmətlərimizdən istifadə edə bilərsiniz.</p>
+        <a href="login.html" class="auth-side-btn">Daxil ol</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img footer-logo-img" /></div>
+        <p>Saglamliginiz ucun etibarlı, herterefli ve muasir tibbi xidmetler gosteririk.</p>
+        <p class="footer-phone"><strong>+994 12 123 45 67</strong></p>
+      </div>
+      <div class="footer-links"><h4>Korporativ</h4><a href="#">Haqqimizda</a><a href="#">Missiya &amp; Vizyon</a><a href="#">Karyera</a><a href="#">Elaqe</a></div>
+      <div class="footer-links"><h4>Xidmetler</h4><a href="#">Tecili Yardim</a><a href="#">Poliklinikalar</a><a href="#">Laboratoriya</a><a href="#">Aptek</a></div>
+      <div class="footer-links"><h4>Xeste</h4><a href="#">Onlayn Randevu</a><a href="#">Xeste Huquqlari</a><a href="#">Mexfilik Siyaseti</a><a href="#">Tez-tez Sorusulanlar</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 Lafromed Healthcare. Butun huquqlar qorunur.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+    document.querySelectorAll('.auth-toggle-pw').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = btn.parentElement.querySelector('input');
+        input.type = input.type === 'password' ? 'text' : 'password';
+      });
+    });
+    const pwInput = document.getElementById('regPassword');
+    const pwFill = document.getElementById('pwFill');
+    if (pwInput && pwFill) {
+      pwInput.addEventListener('input', () => {
+        const val = pwInput.value;
+        let s = 0;
+        if (val.length >= 8) s++;
+        if (/[A-Z]/.test(val)) s++;
+        if (/[0-9]/.test(val)) s++;
+        if (/[^A-Za-z0-9]/.test(val)) s++;
+        pwFill.style.width = (s/4*100) + '%';
+        pwFill.className = 'auth-pw-fill ' + ['','weak','medium','strong','very-strong'][s];
+      });
+    }
+  </script>
+</body>
+</html>

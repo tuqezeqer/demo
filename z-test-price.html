@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qiymətlər — Lafromed Healthcare</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+/* ============================================================
+   LAFROMED HEALTHCARE — Pricing Page Styles
+   ============================================================ */
+
+/* ── Entrance Animations ───────────────────────────────── */
+@keyframes priceFadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes priceScaleIn {
+  from { opacity: 0; transform: scale(0.92) translateY(24px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(107,127,94,0.15); }
+  50%      { box-shadow: 0 0 0 12px rgba(107,127,94,0); }
+}
+
+/* ── Breadcrumb ───────────────────────────────────────── */
+.price-breadcrumb {
+  animation: priceFadeUp 0.5s ease both;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-100);
+}
+.price-breadcrumb-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--gray-500);
+}
+.price-breadcrumb-inner a {
+  color: var(--gray-500);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.price-breadcrumb-inner a:hover { color: var(--green-main); }
+.price-breadcrumb-inner svg { color: var(--gray-300); }
+.price-breadcrumb-inner span { color: var(--gray-900); font-weight: 600; }
+
+/* ── Hero / Header Section ────────────────────────────── */
+.price-hero {
+  background: linear-gradient(175deg, #f7f8f5 0%, #eef1ea 40%, #e4e9de 100%);
+  padding: 72px 40px 88px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.price-hero::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(107,127,94,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.price-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-300), transparent);
+}
+.price-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(107,127,94,0.1);
+  border: 1px solid rgba(107,127,94,0.15);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-main);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+  animation: priceFadeUp 0.5s ease 0.1s both;
+}
+.price-hero-badge svg {
+  animation: float 3s ease-in-out infinite;
+}
+.price-hero h1 {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 800;
+  color: var(--gray-900);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  animation: priceFadeUp 0.6s ease 0.15s both;
+}
+.price-hero h1 em {
+  font-style: normal;
+  color: var(--green-main);
+  position: relative;
+}
+.price-hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gold-main);
+  opacity: 0.25;
+  border-radius: 3px;
+}
+.price-hero p {
+  font-size: 17px;
+  color: var(--gray-500);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+  animation: priceFadeUp 0.6s ease 0.25s both;
+}
+
+/* ── Toggle (Aylıq / İllik) ──────────────────────────── */
+.price-toggle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+  animation: priceFadeUp 0.6s ease 0.35s both;
+}
+.price-toggle-label {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--gray-500);
+  transition: color 0.3s;
+}
+.price-toggle-label.active { color: var(--gray-900); }
+.price-toggle {
+  width: 56px;
+  height: 30px;
+  background: var(--gray-300);
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s;
+  border: none;
+  padding: 0;
+}
+.price-toggle.active {
+  background: var(--green-main);
+}
+.price-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.price-toggle.active .price-toggle-knob {
+  transform: translateX(26px);
+}
+.price-save-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--gold-main);
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Pricing Cards Section ────────────────────────────── */
+.price-section {
+  padding: 0 40px 100px;
+  margin-top: -48px;
+  position: relative;
+  z-index: 1;
+}
+.price-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Individual Card ──────────────────────────────────── */
+.price-card {
+  background: var(--white);
+  border: 1.5px solid var(--gray-100);
+  border-radius: 28px;
+  padding: 44px 36px 40px;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease, border-color 0.3s;
+  overflow: hidden;
+}
+.price-card:nth-child(1) { animation: priceScaleIn 0.6s ease 0.2s both; }
+.price-card:nth-child(2) { animation: priceScaleIn 0.6s ease 0.35s both; }
+.price-card:nth-child(3) { animation: priceScaleIn 0.6s ease 0.5s both; }
+
+.price-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 28px 28px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px -12px rgba(61,90,62,0.12);
+  border-color: rgba(107,127,94,0.2);
+}
+.price-card:hover::before { opacity: 1; }
+
+/* Card variants */
+.price-card--start::before  { background: var(--green-mid); }
+.price-card--pro::before    { background: linear-gradient(90deg, var(--green-main), var(--gold-main)); }
+.price-card--premium::before { background: var(--gold-main); }
+
+/* Popular (Pro) card special */
+.price-card--pro {
+  border-color: rgba(107,127,94,0.3);
+  box-shadow: 0 16px 48px -8px rgba(61,90,62,0.14);
+  transform: scale(1.03);
+  z-index: 2;
+}
+.price-card--pro::before { opacity: 1; height: 5px; }
+.price-card--pro:hover {
+  transform: scale(1.03) translateY(-6px);
+  box-shadow: 0 32px 72px -12px rgba(61,90,62,0.2);
+}
+
+.price-popular-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--green-main), var(--green-deep));
+  color: var(--white);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: pulseGlow 2.5s ease infinite;
+}
+
+/* ── Card Header ──────────────────────────────────────── */
+.price-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.price-card--start .price-card-icon  { background: var(--green-light); color: var(--green-mid); }
+.price-card--pro .price-card-icon    { background: rgba(107,127,94,0.12); color: var(--green-main); }
+.price-card--premium .price-card-icon { background: rgba(196,162,101,0.12); color: var(--gold-main); }
+
+.price-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.price-card--start .price-card-name  { color: var(--green-mid); }
+.price-card--pro .price-card-name    { color: var(--green-main); }
+.price-card--premium .price-card-name { color: var(--gold-main); }
+
+.price-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.price-card-desc {
+  font-size: 14px;
+  color: var(--gray-500);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* ── Price Display ────────────────────────────────────── */
+.price-amount-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.price-currency {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+.price-amount {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--gray-900);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.price-period {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-500);
+  margin-bottom: 32px;
+}
+.price-old {
+  font-size: 15px;
+  color: var(--gray-300);
+  text-decoration: line-through;
+  margin-left: 10px;
+  font-weight: 600;
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.price-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-100), transparent);
+  margin-bottom: 28px;
+}
+
+/* ── Features List ────────────────────────────────────── */
+.price-features {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.price-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+.price-feature-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.price-feature-icon.included {
+  background: rgba(107,127,94,0.1);
+  color: var(--green-main);
+}
+.price-feature-icon.excluded {
+  background: var(--gray-100);
+  color: var(--gray-300);
+}
+.price-feature.excluded-text {
+  color: var(--gray-300);
+}
+
+/* ── CTA Button ───────────────────────────────────────── */
+.price-cta {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+.price-cta--outline {
+  background: var(--white);
+  color: var(--green-main);
+  border: 1.5px solid var(--green-main);
+}
+.price-cta--outline:hover {
+  background: var(--green-main);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(107,127,94,0.2);
+}
+.price-cta--filled {
+  background: var(--green-main);
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(107,127,94,0.25);
+}
+.price-cta--filled:hover {
+  background: var(--green-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(61,90,62,0.3);
+}
+.price-cta--gold {
+  background: linear-gradient(135deg, var(--gold-main), #d4b87a);
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(196,162,101,0.25);
+}
+.price-cta--gold:hover {
+  background: linear-gradient(135deg, #b8944f, var(--gold-main));
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(196,162,101,0.35);
+}
+
+/* ── Guarantee Banner ─────────────────────────────────── */
+.price-guarantee {
+  max-width: 1200px;
+  margin: -20px auto 0;
+  padding: 0 40px 100px;
+}
+.price-guarantee-inner {
+  background: var(--green-pale);
+  border: 1px solid rgba(107,127,94,0.1);
+  border-radius: 24px;
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  animation: priceFadeUp 0.6s ease 0.7s both;
+}
+.price-guarantee-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: rgba(107,127,94,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--green-main);
+}
+.price-guarantee-text h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 6px;
+}
+.price-guarantee-text p {
+  font-size: 14.5px;
+  color: var(--gray-500);
+  line-height: 1.65;
+}
+
+/* ── FAQ Section ──────────────────────────────────────── */
+.price-faq {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 40px 100px;
+}
+.price-faq-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--gray-900);
+  text-align: center;
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+}
+.faq-item {
+  border: 1px solid var(--gray-100);
+  border-radius: 18px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.faq-item:hover {
+  border-color: rgba(107,127,94,0.2);
+}
+.faq-item.open {
+  border-color: rgba(107,127,94,0.25);
+  box-shadow: 0 4px 16px rgba(61,90,62,0.06);
+}
+.faq-question {
+  width: 100%;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--gray-900);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--green-main); }
+.faq-chevron {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--gray-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.23,1,0.32,1), background 0.3s;
+  color: var(--gray-500);
+}
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+  background: var(--green-light);
+  color: var(--green-main);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.23,1,0.32,1), padding 0.3s;
+}
+.faq-answer-inner {
+  padding: 0 28px 24px;
+  font-size: 14.5px;
+  color: var(--gray-500);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .price-grid { gap: 18px; }
+  .price-card { padding: 36px 28px 36px; }
+  .price-card--pro { transform: scale(1.02); }
+  .price-card--pro:hover { transform: scale(1.02) translateY(-6px); }
+}
+
+@media (max-width: 1024px) {
+  .price-breadcrumb-inner { padding: 14px 16px; }
+  .price-hero { padding: 48px 20px 72px; }
+}
+
+@media (max-width: 900px) {
+  .price-section { padding: 0 20px 80px; }
+  .price-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+  .price-card--pro {
+    transform: none;
+    order: -1;
+  }
+  .price-card--pro:hover { transform: translateY(-6px); }
+  .price-guarantee { padding: 0 20px 80px; }
+  .price-guarantee-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 28px;
+  }
+  .price-faq { padding: 0 20px 80px; }
+  .price-faq-title { font-size: 26px; margin-bottom: 32px; }
+}
+
+@media (max-width: 768px) {
+  .price-hero { padding: 36px 16px 64px; }
+  .price-hero h1 { font-size: 28px; }
+  .price-hero p { font-size: 15px; }
+  .price-amount { font-size: 44px; }
+  .price-section { margin-top: -36px; }
+  .price-card { padding: 32px 24px; border-radius: 22px; }
+  .faq-question { padding: 18px 20px; font-size: 14.5px; }
+  .faq-answer-inner { padding: 0 20px 20px; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER TOP ──────────────────────────────────────── -->
+  <header class="header-top">
+    <div class="header-top-inner">
+      <a href="index.html" class="logo">
+        <img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img logo-desktop" />
+        <img src="uploads/logo_mobile.svg" alt="Lafromed Healthcare" class="logo-img logo-mobile" />
+      </a>
+      <div class="header-top-right">
+        <div class="header-search">
+          <input type="text" placeholder="Axtarış..." class="header-search-input" data-i18n-placeholder="header_search_placeholder" />
+          <button class="header-search-btn" aria-label="Axtar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <div class="header-actions">
+          <div class="header-lang" id="langToggle">
+            <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlag" />
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+              <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+              <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+            </div>
+          </div>
+          <a href="login.html" class="header-login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="header_cabinet">Kabinet</span>
+          </a>
+        </div>
+      </div>
+      <div class="header-mobile-actions">
+        <div class="header-lang" id="langToggleMob">
+          <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlagMob" />
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="lang-dropdown" id="langDropdownMob">
+            <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+            <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+            <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+          </div>
+        </div>
+        <button class="mobile-icon-btn" id="mobileSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── SPOTLIGHT SEARCH OVERLAY ──────────────────────── -->
+  <div class="spotlight-overlay" id="spotlightOverlay">
+    <div class="spotlight-backdrop" id="spotlightBackdrop"></div>
+    <div class="spotlight-box">
+      <div class="spotlight-input-wrap">
+        <svg class="spotlight-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Axtarış..." autocomplete="off" />
+        <button class="spotlight-search-btn" id="spotlightSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HEADER NAV (sticky) ─────────────────────────────── -->
+  <nav class="header-nav" id="headerNav">
+    <div class="header-nav-inner">
+      <div class="header-nav-links">
+        <a href="index.html" class="nav-item" data-i18n="nav_home">Əsas Səhifə</a>
+        <a href="about.html" class="nav-item" data-i18n="nav_about">Haqqımızda</a>
+        <a href="#" class="nav-item" data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+        <a href="#" class="nav-item" data-i18n="nav_doctors">Həkimlərimiz</a>
+        <a href="#" class="nav-item" data-i18n="nav_diseases">Xəstəliklər və müalicələr</a>
+        <a href="#" class="nav-item" data-i18n="nav_appointment">E-randevu</a>
+        <a href="#" class="nav-item" data-i18n="nav_contact">Əlaqə</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE MENU ─────────────────────────────────────── -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-top">
+      <button class="mobile-menu-close" id="mobileClose" aria-label="Bağla">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-menu-links">
+      <a href="index.html" class="mob-link">Əsas Səhifə</a>
+      <a href="about.html" class="mob-link">Haqqımızda</a>
+      <a href="#" class="mob-link">Tibbi bölmələrimiz</a>
+      <a href="#" class="mob-link">Həkimlərimiz</a>
+      <a href="#" class="mob-link">Xəstəliklər və müalicələr</a>
+      <a href="#" class="mob-link">E-randevu</a>
+      <a href="#" class="mob-link">Əlaqə</a>
+      <div class="mob-divider"></div>
+      <a href="login.html" class="mob-link mob-cabinet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Kabinet
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── BREADCRUMB ──────────────────────────────────────── -->
+  <div class="price-breadcrumb">
+    <div class="price-breadcrumb-inner">
+      <a href="index.html">Əsas səhifə</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Qiymətlər</span>
+    </div>
+  </div>
+
+  <!-- ── PRICING HERO ────────────────────────────────────── -->
+  <section class="price-hero">
+    <div class="price-hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Xüsusi Qiymətlər
+    </div>
+    <h1>Sizə uyğun <em>sağlamlıq planı</em> seçin</h1>
+    <p>Hər bir paket fərqli ehtiyaclara uyğun hazırlanıb. Sizə ən uyğun olanı seçin və sağlamlığınıza investisiya edin.</p>
+
+    <!-- Toggle -->
+    <div class="price-toggle-wrap">
+      <span class="price-toggle-label active" id="monthlyLabel">Aylıq</span>
+      <button class="price-toggle" id="priceToggle" aria-label="Ödəniş dövrünü dəyiş">
+        <span class="price-toggle-knob"></span>
+      </button>
+      <span class="price-toggle-label" id="yearlyLabel">İllik</span>
+      <span class="price-save-badge">20% qənaət</span>
+    </div>
+  </section>
+
+  <!-- ── PRICING CARDS ───────────────────────────────────── -->
+  <section class="price-section">
+    <div class="price-grid">
+
+      <!-- ─── START ─────────────────────────────── -->
+      <div class="price-card price-card--start">
+        <div class="price-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="price-card-name">Start</div>
+        <h3 class="price-card-title">Əsas Sağlamlıq</h3>
+        <p class="price-card-desc">Ümumi müayinə və profilaktik xidmətlər üçün ideal başlanğıc plan.</p>
+
+        <div class="price-amount-wrap">
+          <span class="price-currency">₼</span>
+          <span class="price-amount" data-monthly="49" data-yearly="39">49</span>
+        </div>
+        <div class="price-period">/ <span class="price-period-text">ay</span><span class="price-old price-old-yearly" style="display:none;">₼49/ay</span></div>
+
+        <div class="price-divider"></div>
+
+        <ul class="price-features">
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Ümumi həkim konsultasiyası
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            İllik ümumi müayinə (1 dəfə)
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Əsas laboratoriya analizləri
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Onlayn randevu sistemi
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Tibbi sənəd rəqəmsal arxivi
+          </li>
+          <li class="price-feature excluded-text">
+            <span class="price-feature-icon excluded"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            İxtisaslaşmış həkim müayinəsi
+          </li>
+          <li class="price-feature excluded-text">
+            <span class="price-feature-icon excluded"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            Şəxsi sağlamlıq meneceri
+          </li>
+        </ul>
+
+        <a href="register.html" class="price-cta price-cta--outline">Başla</a>
+      </div>
+
+      <!-- ─── PRO ───────────────────────────────── -->
+      <div class="price-card price-card--pro">
+        <span class="price-popular-tag">Ən populyar</span>
+        <div class="price-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="price-card-name">Pro</div>
+        <h3 class="price-card-title">Tam Sağlamlıq</h3>
+        <p class="price-card-desc">Geniş müayinə və mütəxəssis xidmətləri ilə tam qorunma.</p>
+
+        <div class="price-amount-wrap">
+          <span class="price-currency">₼</span>
+          <span class="price-amount" data-monthly="99" data-yearly="79">99</span>
+        </div>
+        <div class="price-period">/ <span class="price-period-text">ay</span><span class="price-old price-old-yearly" style="display:none;">₼99/ay</span></div>
+
+        <div class="price-divider"></div>
+
+        <ul class="price-features">
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Start paketinin bütün xidmətləri
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            İxtisaslaşmış həkim müayinəsi (3 dəfə)
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Genişlənmiş laboratoriya paneli
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            USM və EKQ diaqnostikası
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Prioritet randevu sırası
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Onlayn video konsultasiya
+          </li>
+          <li class="price-feature excluded-text">
+            <span class="price-feature-icon excluded"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            Şəxsi sağlamlıq meneceri
+          </li>
+        </ul>
+
+        <a href="register.html" class="price-cta price-cta--filled">Planı seç</a>
+      </div>
+
+      <!-- ─── PREMIUM ───────────────────────────── -->
+      <div class="price-card price-card--premium">
+        <div class="price-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="price-card-name">Premium</div>
+        <h3 class="price-card-title">VIP Sağlamlıq</h3>
+        <p class="price-card-desc">Tam fərdi yanaşma, limitsiz xidmətlər və VIP imtiyazlar.</p>
+
+        <div class="price-amount-wrap">
+          <span class="price-currency">₼</span>
+          <span class="price-amount" data-monthly="189" data-yearly="149">189</span>
+        </div>
+        <div class="price-period">/ <span class="price-period-text">ay</span><span class="price-old price-old-yearly" style="display:none;">₼189/ay</span></div>
+
+        <div class="price-divider"></div>
+
+        <ul class="price-features">
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Pro paketinin bütün xidmətləri
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Limitsiz mütəxəssis müayinəsi
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            MRT, KT və tam diaqnostika
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Şəxsi sağlamlıq meneceri (24/7)
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            VIP gözləmə otağı və xidmət
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Ailə üzvləri üçün 15% endirim
+          </li>
+          <li class="price-feature">
+            <span class="price-feature-icon included"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+            Beynəlxalq klinikalarla əlaqə
+          </li>
+        </ul>
+
+        <a href="register.html" class="price-cta price-cta--gold">Premium ol</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── GUARANTEE BANNER ────────────────────────────────── -->
+  <div class="price-guarantee">
+    <div class="price-guarantee-inner">
+      <div class="price-guarantee-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      <div class="price-guarantee-text">
+        <h3>30 gün ərzində geri qaytarma zəmanəti</h3>
+        <p>Xidmətlərimizdən razı qalmasanız, 30 gün ərzində heç bir sual olmadan pulunuzu geri qaytarırıq. Sağlamlığınız bizim üçün önəmlidir.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FAQ ─────────────────────────────────────────────── -->
+  <section class="price-faq">
+    <h2 class="price-faq-title">Tez-tez soruşulan suallar</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Paketi istənilən vaxt dəyişə bilərəm?
+        <span class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Bəli, istənilən vaxt paketinizi yüksəldə və ya aşağı sala bilərsiniz. Dəyişiklik növbəti ödəniş dövründən etibarən qüvvəyə minir. Yüksəltmə zamanı fərq proporsional olaraq hesablanır.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Ödəniş hansı üsullarla qəbul olunur?
+        <span class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Visa, Mastercard və yerli bank kartları ilə ödəniş edə bilərsiniz. Həmçinin bank köçürməsi və nağd ödəniş imkanı da mövcuddur. Bütün onlayn ödənişlər SSL ilə qorunur.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Ailə üzvlərimi də əlavə edə bilərəm?
+        <span class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Premium paketdə ailə üzvləri üçün 15% endirim mövcuddur. Digər paketlərdə hər bir ailə üzvü üçün ayrıca abunəlik tələb olunur, lakin xüsusi ailə endirimi tətbiq edilir.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        İllik ödəniş edəndə necə qənaət edirəm?
+        <span class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">İllik ödəniş seçdikdə aylıq qiymətə nisbətən 20% qənaət edirsiniz. Məsələn, Pro paket aylıq ₼99 əvəzinə ₼79/ay olaraq hesablanır. Ödəniş bir dəfəyə illik olaraq tutulur.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Abunəliyimi ləğv edə bilərəmmi?
+        <span class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">İstənilən vaxt abunəliyinizi ləğv edə bilərsiniz. Ləğv etdikdən sonra cari ödəniş dövrünün sonuna qədər xidmətlərdən istifadə edə bilərsiniz. 30 gün geri qaytarma zəmanətimiz bütün paketlərə şamil olunur.</div></div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img footer-logo-img" /></div>
+        <p>Sağlamlığınız üçün etibarlı, hərtərəfli və müasir tibbi xidmətlər göstəririk.</p>
+        <p class="footer-phone"><strong>+994 12 123 45 67</strong></p>
+      </div>
+      <div class="footer-links"><h4>Korporativ</h4><a href="#">Haqqımızda</a><a href="#">Missiya &amp; Vizyon</a><a href="#">Karyera</a><a href="#">Əlaqə</a></div>
+      <div class="footer-links"><h4>Xidmətlər</h4><a href="#">Təcili Yardım</a><a href="#">Poliklinikalar</a><a href="#">Laboratoriya</a><a href="#">Aptek</a></div>
+      <div class="footer-links"><h4>Xəstə</h4><a href="#">Onlayn Randevu</a><a href="#">Xəstə Hüquqları</a><a href="#">Məxfilik Siyasəti</a><a href="#">Tez-tez Soruşulanlar</a></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 Lafromed Healthcare. Bütün hüquqlar qorunur.</p></div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────── -->
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+  (function() {
+    /* ── Price Toggle (Aylıq ↔ İllik) ──────────────── */
+    const toggle = document.getElementById('priceToggle');
+    const monthlyLabel = document.getElementById('monthlyLabel');
+    const yearlyLabel = document.getElementById('yearlyLabel');
+    const amounts = document.querySelectorAll('.price-amount');
+    const periodTexts = document.querySelectorAll('.price-period-text');
+    const oldPrices = document.querySelectorAll('.price-old-yearly');
+    let isYearly = false;
+
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        isYearly = !isYearly;
+        toggle.classList.toggle('active', isYearly);
+        monthlyLabel.classList.toggle('active', !isYearly);
+        yearlyLabel.classList.toggle('active', isYearly);
+
+        amounts.forEach(el => {
+          const target = isYearly ? el.dataset.yearly : el.dataset.monthly;
+          // Animate number change
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(-8px)';
+          setTimeout(() => {
+            el.textContent = target;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, 200);
+        });
+
+        periodTexts.forEach(el => {
+          el.textContent = isYearly ? 'ay' : 'ay';
+        });
+
+        oldPrices.forEach(el => {
+          el.style.display = isYearly ? 'inline' : 'none';
+        });
+      });
+    }
+
+    /* ── FAQ Accordion ─────────────────────────────── */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        // Open clicked (if wasn't open)
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    /* ── Scroll reveal for cards ───────────────────── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = entry.target.classList.contains('price-card--pro')
+            ? 'scale(1.03) translateY(0)'
+            : 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.faq-item').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
+      observer.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>
