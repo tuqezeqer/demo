@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-randevu — Lafromed Healthcare</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="appointment.css" />
+</head>
+<body>
+
+
+  <!-- ── HEADER TOP (not sticky, scrolls away) ──────────── -->
+  <header class="header-top">
+    <div class="header-top-inner">
+      <a href="index.html" class="logo">
+        <img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img logo-desktop" /><img src="uploads/logo_mobile.svg" alt="Lafromed Healthcare" class="logo-img logo-mobile" />
+      </a>
+      <div class="header-top-right">
+        <div class="header-search">
+          <input type="text" placeholder="Axtarış..." data-i18n-placeholder="header_search_placeholder" class="header-search-input" />
+          <button class="header-search-btn" aria-label="Axtar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <div class="header-actions">
+          <div class="header-lang" id="langToggle">
+            <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlag" />
+            <svg class="lang-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+              <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+              <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+            </div>
+          </div>
+          <a href="login.html" class="header-login">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="header_cabinet">Kabinet</span>
+          </a>
+        </div>
+      </div>
+      <!-- Mobile actions -->
+      <div class="header-mobile-actions">
+        <div class="header-lang" id="langToggleMob">
+          <img src="uploads/langs/aze.svg" alt="AZ" class="lang-flag" id="currentFlagMob" />
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="lang-dropdown" id="langDropdownMob">
+            <button class="lang-option active" data-lang="az" data-flag="uploads/langs/aze.svg"><img src="uploads/langs/aze.svg" alt="" class="lang-flag" /> Azərbaycan</button>
+            <button class="lang-option" data-lang="en" data-flag="uploads/langs/eng.svg"><img src="uploads/langs/eng.svg" alt="" class="lang-flag" /> English</button>
+            <button class="lang-option" data-lang="ru" data-flag="uploads/langs/ru.svg"><img src="uploads/langs/ru.svg" alt="" class="lang-flag" /> Русский</button>
+          </div>
+        </div>
+        <button class="mobile-icon-btn" id="mobileSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── SPOTLIGHT SEARCH OVERLAY ──────────────────────── -->
+  <div class="spotlight-overlay" id="spotlightOverlay">
+    <div class="spotlight-backdrop" id="spotlightBackdrop"></div>
+    <div class="spotlight-box">
+      <div class="spotlight-input-wrap">
+        <svg class="spotlight-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="spotlight-input" id="spotlightInput" placeholder="Axtarış..." data-i18n-placeholder="header_search_placeholder" autocomplete="off" />
+        <button class="spotlight-search-btn" id="spotlightSearchBtn" aria-label="Axtar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HEADER NAV (sticky — only this sticks on scroll) ── -->
+  <nav class="header-nav" id="headerNav">
+    <div class="header-nav-inner">
+      <div class="header-nav-links">
+        <a href="index.html" class="nav-item" data-i18n="nav_home">Əsas Səhifə</a>
+        <a href="about.html" class="nav-item active-nav"data-i18n="nav_about">Haqqımızda</a>
+        <a href="departments.html" class="nav-item"data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+        <a href="doctors.html" class="nav-item"data-i18n="nav_doctors">Həkimlərimiz</a>
+        <a href="blog.html" class="nav-item"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
+        <a href="appointment.html" class="nav-item active-nav"data-i18n="nav_appointment">E-randevu</a>
+        <a href="contact.html" class="nav-item"data-i18n="nav_contact">Əlaqə</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE SLIDE-IN MENU (right side) ─────────── -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-top">
+      <button class="mobile-menu-close" id="mobileClose" aria-label="Bağla">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+<nav class="mobile-menu-links">
+      <a href="index.html" class="mob-link" data-i18n="nav_home">Əsas Səhifə</a>
+      <a href="about.html" class="mob-link"data-i18n="nav_about">Haqqımızda</a>
+      <a href="departments.html" class="mob-link"data-i18n="nav_departments">Tibbi bölmələrimiz</a>
+      <a href="doctors.html" class="mob-link"data-i18n="nav_doctors">Həkimlərimiz</a>
+      <a href="blog.html" class="mob-link"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
+      <a href="appointment.html" class="mob-link"data-i18n="nav_appointment">E-randevu</a>
+      <a href="contact.html" class="mob-link"data-i18n="nav_contact">Əlaqə</a>
+      <div class="mob-divider"></div>
+      <a href="login.html" class="mob-link mob-cabinet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Kabinet
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── BREADCRUMB ──────────────────────────────────────── -->
+  <div class="appt-breadcrumb">
+    <div class="appt-breadcrumb-inner">
+      <a href="index.html">Əsas səhifə</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>E-randevu</span>
+    </div>
+  </div>
+
+  <!-- ── PAGE HERO ─────────────────────────────────────── -->
+  <section class="appt-hero">
+    <div class="appt-hero-bg">
+      <div class="appt-hero-pattern"></div>
+    </div>
+    <div class="appt-hero-content">
+      <h1 class="appt-hero-title">Onlayn randevunuzu<br/>indi təyin edin.</h1>
+      <p class="appt-hero-desc">Bir neçə sadə addımla mütəxəssis həkimlərimizə randevu alın. Sürətli, asan və 7/24 əlçatan.</p>
+    </div>
+  </section>
+
+  <!-- ── APPOINTMENT FORM ────────────────────────────────── -->
+  <section class="appt-section">
+    <div class="appt-container">
+      <div class="appt-layout">
+
+        <!-- ── Left: Form ──────────────────────────────── -->
+        <div class="appt-form-card">
+          <div class="appt-form-header">
+            <div class="appt-step-indicator">
+              <div class="appt-step active" data-step="1"><span>1</span><p>Bölmə</p></div>
+              <div class="appt-step-line"></div>
+              <div class="appt-step" data-step="2"><span>2</span><p>Həkim</p></div>
+              <div class="appt-step-line"></div>
+              <div class="appt-step" data-step="3"><span>3</span><p>Tarix</p></div>
+              <div class="appt-step-line"></div>
+              <div class="appt-step" data-step="4"><span>4</span><p>Məlumat</p></div>
+            </div>
+          </div>
+
+          <form class="appt-form" id="apptForm">
+            <!-- Step 1: Department -->
+            <div class="appt-form-step active" id="step1">
+              <h2>Bölmə seçin</h2>
+              <p class="appt-form-desc">Müraciət etmək istədiyiniz tibbi bölməni seçin.</p>
+              <div class="appt-dept-grid" id="deptGrid">
+                <label class="appt-dept-option">
+                  <input type="radio" name="department" value="Kardiologiya" />
+                  <div class="appt-dept-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    <span>Kardiologiya</span>
+                  </div>
+                </label>
+                <label class="appt-dept-option">
+                  <input type="radio" name="department" value="Nevrologiya" />
+                  <div class="appt-dept-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a7 7 0 017 7c0 3-2 5.5-4 7.5L12 22l-3-5.5C7 14.5 5 12 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                    <span>Nevrologiya</span>
+                  </div>
+                </label>
+                <label class="appt-dept-option">
+                  <input type="radio" name="department" value="Urologiya" />
+                  <div class="appt-dept-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>Urologiya</span>
+                  </div>
+                </label>
+                <label class="appt-dept-option">
+                  <input type="radio" name="department" value="Pediatriya" />
+                  <div class="appt-dept-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    <span>Pediatriya</span>
+                  </div>
+                </label>
+                <label class="appt-dept-option">
+                  <input type="radio" name="department" value="Ortopediya" />
+                  <div class="appt-dept-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 4a3 3 0 00-3 3v8a3 3 0 006 0V7a3 3 0 00-3-3z"/><path d="M6 4a3 3 0 00-3 3v8a3 3 0 006 0V7a3 3 0 00-3-3z"/><path d="M3 12h18"/></svg>
+                    <span>Ortopediya</span>
+                  </div>
+                </label>
+                <label class="appt-dept-option">
+                  <input type="radio" name="department" value="Fizioterapiya" />
+                  <div class="appt-dept-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <span>Fizioterapiya</span>
+                  </div>
+                </label>
+              </div>
+              <button type="button" class="appt-next-btn" id="nextStep1" disabled>Davam et →</button>
+            </div>
+
+            <!-- Step 2: Doctor -->
+            <div class="appt-form-step" id="step2">
+              <h2>Həkim seçin</h2>
+              <p class="appt-form-desc">Seçdiyiniz bölmədəki həkimlərdən birini seçin.</p>
+              <div class="appt-doctor-list" id="doctorList">
+                <!-- Populated by JS -->
+              </div>
+              <div class="appt-nav-btns">
+                <button type="button" class="appt-back-btn" id="backStep2">← Geri</button>
+                <button type="button" class="appt-next-btn" id="nextStep2" disabled>Davam et →</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Date & Time -->
+            <div class="appt-form-step" id="step3">
+              <h2>Tarix və vaxt seçin</h2>
+              <p class="appt-form-desc">Sizin üçün uyğun olan tarixi və vaxtı seçin.</p>
+              <div class="appt-datetime">
+                <div class="appt-field">
+                  <label>Tarix</label>
+                  <input type="date" id="apptDate" required />
+                </div>
+                <div class="appt-field">
+                  <label>Vaxt</label>
+                  <select id="apptTime" required>
+                    <option value="">Vaxt seçin</option>
+                    <option>09:00</option>
+                    <option>09:30</option>
+                    <option>10:00</option>
+                    <option>10:30</option>
+                    <option>11:00</option>
+                    <option>11:30</option>
+                    <option>13:00</option>
+                    <option>13:30</option>
+                    <option>14:00</option>
+                    <option>14:30</option>
+                    <option>15:00</option>
+                    <option>15:30</option>
+                    <option>16:00</option>
+                    <option>16:30</option>
+                  </select>
+                </div>
+              </div>
+              <div class="appt-nav-btns">
+                <button type="button" class="appt-back-btn" id="backStep3">← Geri</button>
+                <button type="button" class="appt-next-btn" id="nextStep3" disabled>Davam et →</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Personal Info -->
+            <div class="appt-form-step" id="step4">
+              <h2>Şəxsi məlumatlarınız</h2>
+              <p class="appt-form-desc">Randevunuzun təsdiqi üçün məlumatlarınızı daxil edin.</p>
+              <div class="appt-personal-fields">
+                <div class="appt-field-row">
+                  <div class="appt-field">
+                    <label>Ad</label>
+                    <input type="text" id="apptName" placeholder="Adınız" required />
+                  </div>
+                  <div class="appt-field">
+                    <label>Soyad</label>
+                    <input type="text" id="apptSurname" placeholder="Soyadınız" required />
+                  </div>
+                </div>
+                <div class="appt-field-row">
+                  <div class="appt-field">
+                    <label>Telefon</label>
+                    <input type="tel" id="apptPhone" placeholder="+994 5x xxx xx xx" required />
+                  </div>
+                  <div class="appt-field">
+                    <label>E-mail</label>
+                    <input type="email" id="apptEmail" placeholder="sizin@email.az" />
+                  </div>
+                </div>
+                <div class="appt-field">
+                  <label>Qeydləriniz (istəyə bağlı)</label>
+                  <textarea id="apptNotes" placeholder="Şikayətinizi və ya qeydlərinizi yazın..." rows="3"></textarea>
+                </div>
+              </div>
+              <div class="appt-nav-btns">
+                <button type="button" class="appt-back-btn" id="backStep4">← Geri</button>
+                <button type="submit" class="appt-submit-btn">Randevunu Təsdiqlə</button>
+              </div>
+            </div>
+
+            <!-- Success -->
+            <div class="appt-form-step" id="stepSuccess">
+              <div class="appt-success">
+                <div class="appt-success-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h2>Randevunuz uğurla qeydə alındı!</h2>
+                <p>Ən qısa zamanda sizinlə əlaqə saxlanılacaq. Təşəkkür edirik!</p>
+                <div class="appt-summary" id="apptSummary"></div>
+                <a href="index.html" class="appt-home-btn">Əsas səhifəyə qayıt</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo"><img src="uploads/logo.svg" alt="Lafromed Healthcare" class="logo-img footer-logo-img" /></div>
+        <p data-i18n="footer_desc">Saglamliginiz ucun etibarlı, herterefli ve muasir tibbi xidmetler gosteririk.</p>
+        <p class="footer-phone"><strong>+994 12 123 45 67</strong></p>
+      </div>
+      <div class="footer-links"><h4 data-i18n="footer_corporate">Korporativ</h4><a href="#"data-i18n="footer_about">Haqqimizda</a><a href="#"data-i18n="footer_mission">Missiya &amp; Vizyon</a><a href="#"data-i18n="footer_career">Karyera</a><a href="#"data-i18n="footer_contact">Elaqe</a></div>
+      <div class="footer-links"><h4 data-i18n="footer_services">Xidmetler</h4><a href="#"data-i18n="footer_emergency">Tecili Yardim</a><a href="#"data-i18n="footer_clinics">Poliklinikalar</a><a href="#"data-i18n="footer_laboratory">Laboratoriya</a><a href="#"data-i18n="footer_pharmacy">Aptek</a></div>
+      <div class="footer-links"><h4 data-i18n="footer_patient">Xeste</h4><a href="#"data-i18n="footer_online_appointment">Onlayn Randevu</a><a href="#"data-i18n="footer_patient_rights">Xeste Huquqlari</a><a href="#"data-i18n="footer_privacy">Mexfilik Siyaseti</a><a href="#"data-i18n="footer_faq">Tez-tez Sorusulanlar</a></div>
+    </div>
+    <div class="footer-bottom"><p data-i18n-html="footer_copyright">&copy; 2024 Lafromed Healthcare. Butun huquqlar qorunur.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="i18n.js"></script>
+  <script>
+    const doctorData = {
+      'Kardiologiya': [
+        { name: 'Fərq etməz', value: 'any' },
+        { name: 'Dr. Aysel Məmmədova', value: 'aysel-mammadova' }
+      ],
+      'Nevrologiya': [
+        { name: 'Fərq etməz', value: 'any' },
+        { name: 'Dr. Tural Həsənov', value: 'tural-hasanov' }
+      ],
+      'Urologiya': [
+        { name: 'Fərq etməz', value: 'any' },
+        { name: 'Dr. Cəfər Əhmədli', value: 'jafar-ahmadli' }
+      ],
+      'Pediatriya': [
+        { name: 'Fərq etməz', value: 'any' },
+        { name: 'Dr. Münəvvər Həsənova', value: 'munavvar-hasanova' }
+      ],
+      'Ortopediya': [
+        { name: 'Fərq etməz', value: 'any' },
+        { name: 'Dr. Kamran İsmayılov', value: 'kamran-ismayilov' }
+      ],
+      'Fizioterapiya': [
+        { name: 'Fərq etməz', value: 'any' },
+        { name: 'Dr. Rüfət Cabbarlı', value: 'rufat-jabbarli' }
+      ]
+    };
+
+    const steps = document.querySelectorAll('.appt-form-step');
+    const stepIndicators = document.querySelectorAll('.appt-step');
+    const doctorList = document.getElementById('doctorList');
+    let currentStep = 1;
+
+    function showStep(n) {
+      steps.forEach(s => s.classList.remove('active'));
+      document.getElementById(n === 5 ? 'stepSuccess' : 'step' + n).classList.add('active');
+      stepIndicators.forEach((s, i) => {
+        s.classList.toggle('active', i + 1 <= n);
+        s.classList.toggle('done', i + 1 < n);
+      });
+      currentStep = n;
+    }
+
+    const deptRadios = document.querySelectorAll('input[name="department"]');
+    const nextStep1 = document.getElementById('nextStep1');
+    deptRadios.forEach(r => { r.addEventListener('change', () => { nextStep1.disabled = false; }); });
+    nextStep1.addEventListener('click', () => {
+      const dept = document.querySelector('input[name="department"]:checked').value;
+      populateDoctors(dept);
+      showStep(2);
+    });
+
+    function populateDoctors(dept) {
+      const doctors = doctorData[dept] || [];
+      doctorList.innerHTML = '';
+      doctors.forEach(doc => {
+        const label = document.createElement('label');
+        label.className = 'appt-doctor-option';
+        label.innerHTML = '<input type="radio" name="doctor" value="' + doc.value + '" /><div class="appt-doctor-box"><span class="appt-doctor-name">' + doc.name + '</span>' + (doc.value !== 'any' ? '<span class="appt-doctor-dept">' + dept + '</span>' : '') + '</div>';
+        doctorList.appendChild(label);
+      });
+      const nextStep2 = document.getElementById('nextStep2');
+      nextStep2.disabled = true;
+      doctorList.querySelectorAll('input').forEach(r => { r.addEventListener('change', () => { nextStep2.disabled = false; }); });
+    }
+
+    document.getElementById('nextStep2').addEventListener('click', () => showStep(3));
+    document.getElementById('backStep2').addEventListener('click', () => showStep(1));
+
+    const apptDate = document.getElementById('apptDate');
+    const apptTime = document.getElementById('apptTime');
+    const nextStep3 = document.getElementById('nextStep3');
+    apptDate.setAttribute('min', new Date().toISOString().split('T')[0]);
+    function checkStep3() { nextStep3.disabled = !(apptDate.value && apptTime.value); }
+    apptDate.addEventListener('change', checkStep3);
+    apptTime.addEventListener('change', checkStep3);
+    nextStep3.addEventListener('click', () => showStep(4));
+    document.getElementById('backStep3').addEventListener('click', () => showStep(2));
+
+    document.getElementById('backStep4').addEventListener('click', () => showStep(3));
+    document.getElementById('apptForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const dept = document.querySelector('input[name="department"]:checked')?.value;
+      const doc = document.querySelector('input[name="doctor"]:checked');
+      const docName = doc ? doc.parentElement.querySelector('.appt-doctor-name').textContent : '';
+      const dateRaw = apptDate.value;
+      const dateParts = dateRaw.split('-');
+      const date = dateParts[2] + '.' + dateParts[1] + '.' + dateParts[0];
+      const time = apptTime.value;
+      const name = document.getElementById('apptName').value;
+      const surname = document.getElementById('apptSurname').value;
+      document.getElementById('apptSummary').innerHTML = '<div class="appt-summary-row"><span>Bölmə:</span><strong>' + dept + '</strong></div><div class="appt-summary-row"><span>Həkim:</span><strong>' + docName + '</strong></div><div class="appt-summary-row"><span>Tarix:</span><strong>' + date + '</strong></div><div class="appt-summary-row"><span>Vaxt:</span><strong>' + time + '</strong></div><div class="appt-summary-row"><span>Xəstə:</span><strong>' + name + ' ' + surname + '</strong></div>';
+      showStep(5);
+    });
+  </script>
+</body>
+</html>

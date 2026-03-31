@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haqqımızda — Lafromed Healthcare</title>
+  <title>Əlaqə — Lafromed Healthcare</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="contact.css" />
 </head>
 <body>
+
 
   <!-- ── HEADER TOP (not sticky, scrolls away) ──────────── -->
   <header class="header-top">
@@ -83,7 +84,7 @@
         <a href="doctors.html" class="nav-item"data-i18n="nav_doctors">Həkimlərimiz</a>
         <a href="blog.html" class="nav-item"data-i18n="nav_health_corner">Sağlamlıq guşəsi</a>
         <a href="appointment.html" class="nav-item"data-i18n="nav_appointment">E-randevu</a>
-        <a href="contact.html" class="nav-item"data-i18n="nav_contact">Əlaqə</a>
+        <a href="contact.html" class="nav-item active-nav"data-i18n="nav_contact">Əlaqə</a>
       </div>
     </div>
   </nav>
@@ -113,136 +114,119 @@
   </aside>
 
   <!-- ── BREADCRUMB ──────────────────────────────────────── -->
-  <div class="about-breadcrumb">
-    <div class="about-breadcrumb-inner">
+  <div class="contact-breadcrumb">
+    <div class="contact-breadcrumb-inner">
       <a href="index.html">Əsas səhifə</a>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-      <span>Haqqımızda</span>
+      <span>Əlaqə</span>
     </div>
   </div>
 
   <!-- ── PAGE HERO ─────────────────────────────────────── -->
-  <section class="about-hero">
-    <div class="about-hero-bg">
-      <div class="about-hero-pattern"></div>
+  <section class="contact-hero">
+    <div class="contact-hero-bg">
+      <div class="contact-hero-pattern"></div>
     </div>
-    <div class="about-hero-content">
-      <h1 class="about-hero-title">Sağlamlığınız üçün<br/>güvəndiyiniz ad.</h1>
-      <p class="about-hero-desc">2025-ci ildən bəri Azərbaycanda müasir tibbi xidmətlər göstərən Lafromed Premium Klinika, hər xəstəyə fərdi yanaşma və yüksək keyfiyyətli müalicə təmin edir.</p>
-    </div>
-  </section>
-
-  <!-- ── OUR STORY ───────────────────────────────────────── -->
-  <section class="about-story">
-    <div class="about-story-inner">
-      <div class="about-story-text">
-        <span class="section-tag">Bizim Hekayəmiz</span>
-        <h2 class="about-story-title">Premium keyfiyyət,<br/>fərdi yanaşma.</h2>
-        <p>Lafromed Premium Klinika, 2009-cu ildə Bakıda təsis olunmuşdur. Missiyamız hər xəstəyə fərdi yanaşma ilə ən yüksək keyfiyyətdə tibbi xidmət göstərməkdir.</p>
-        <p>Müasir texnologiyalar, beynəlxalq standartlar və təcrübəli həkim heyəti ilə xəstələrimizin sağlamlığını qorumaq üçün çalışırıq.</p>
-      </div>
-      <div class="about-story-img">
-        <img src="uploads/about/clinic-outside.jpg" alt="Lafromed Klinika" />
-      </div>
+    <div class="contact-hero-content">
+      <h1 class="contact-hero-title">Bizimlə əlaqə<br/>saxlayın.</h1>
+      <p class="contact-hero-desc">Suallarınız, təklifləriniz və ya randevu üçün bizimlə əlaqə saxlamaqdan çəkinməyin.</p>
     </div>
   </section>
 
-  <!-- ── VALUES ──────────────────────────────────────────── -->
-  <section class="about-values">
-    <div class="about-values-inner">
-      <div class="section-header">
-        <span class="section-tag">Dəyərlərimiz</span>
-        <h2>Hər addımda prinsiplərimizlə.</h2>
-        <p class="section-desc">Lafromed olaraq bütün fəaliyyətimizi əsas dəyərlərimiz üzərində qururuq.</p>
-      </div>
-      <div class="about-values-grid">
-        <div class="about-value-card">
-          <div class="about-value-num">01</div>
-          <h3>Etibar</h3>
-          <p>Xəstələrimizlə şəffaf ünsiyyət qurur, hər qərarı birlikdə alırıq.</p>
-        </div>
-        <div class="about-value-card">
-          <div class="about-value-num">02</div>
-          <h3>Peşəkarlıq</h3>
-          <p>Həkimlərimiz daima özlərini inkişaf etdirir, ən son tibbi yenilikləri tətbiq edir.</p>
-        </div>
-        <div class="about-value-card">
-          <div class="about-value-num">03</div>
-          <h3>İnnovasiya</h3>
-          <p>Müasir tibb texnologiyalarını tətbiq edərək prosesləri daim təkmilləşdiririk.</p>
-        </div>
-        <div class="about-value-card">
-          <div class="about-value-num">04</div>
-          <h3>Şəfqət</h3>
-          <p>Hər xəstəyə ailə üzvümüz kimi yanaşırıq. İnsan sağlamlığı ən böyük dəyərdir.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ── CONTACT CONTENT ─────────────────────────────────── -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-layout">
 
-  <!-- ── CERTIFICATES ────────────────────────────────────── -->
-  <section class="about-certs">
-    <div class="about-certs-inner">
-      <div class="section-header">
-        <span class="section-tag">Keyfiyyət və Sertifikatlar</span>
-        <h2>Beynəlxalq standartlara uyğun xidmət</h2>
-      </div>
-      <div class="about-certs-grid">
-        <div class="about-cert-card">
-          <div class="about-cert-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M8 14l-2 8 6-3 6 3-2-8"/></svg>
+        <!-- ── Left: Contact Info Cards ────────────────── -->
+        <div class="contact-info-side">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h3>Ünvan</h3>
+              <p>Bakı şəhəri, Nəsimi rayonu,<br/>Atatürk prospekti 45</p>
+            </div>
           </div>
-          <h3>JCI Akkreditasiya</h3>
-          <p>Beynəlxalq Birgə Komissiya tərəfindən verilən keyfiyyət sertifikatı.</p>
-        </div>
-        <div class="about-cert-card">
-          <div class="about-cert-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h3>Telefon</h3>
+              <p><a href="tel:+994121234567">+994 12 123 45 67</a></p>
+              <p><a href="tel:+994501234567">+994 50 123 45 67</a></p>
+            </div>
           </div>
-          <h3>ISO 9001</h3>
-          <p>Laboratoriya və klinik proseslərdə ISO standartlarına tam uyğunluq.</p>
-        </div>
-        <div class="about-cert-card">
-          <div class="about-cert-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            </div>
+            <div>
+              <h3>E-poçt</h3>
+              <p><a href="/cdn-cgi/l/email-protection#3a53545c557a565b5c4855575f5e145b40"><span class="__cf_email__" data-cfemail="5d34333b321d313c3b2f32303839733c27">[email&#160;protected]</span></a></p>
+            </div>
           </div>
-          <h3>Səhiyyə Nazirliyi Lisenziyası</h3>
-          <p>Azərbaycan Respublikası tərəfindən tam lisenziyalı fəaliyyət.</p>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h3>İş saatları</h3>
+              <p>Bazar ertəsi – Şənbə: 08:00 – 20:00</p>
+              <p>Bazar: 09:00 – 17:00</p>
+            </div>
+          </div>
         </div>
+
+        <!-- ── Right: Contact Form ─────────────────────── -->
+        <div class="contact-form-card">
+          <h2>Bizə yazın</h2>
+          <p class="contact-form-desc">Formu doldurun, ən qısa zamanda sizə geri dönəcəyik.</p>
+          <form class="contact-form" id="contactForm">
+            <div class="contact-field-row">
+              <div class="contact-field">
+                <label>Ad</label>
+                <input type="text" placeholder="Adınız" required />
+              </div>
+              <div class="contact-field">
+                <label>Soyad</label>
+                <input type="text" placeholder="Soyadınız" required />
+              </div>
+            </div>
+            <div class="contact-field-row">
+              <div class="contact-field">
+                <label>Telefon</label>
+                <input type="tel" placeholder="+994 5x xxx xx xx" required />
+              </div>
+              <div class="contact-field">
+                <label>E-poçt</label>
+                <input type="email" placeholder="sizin@email.az" />
+              </div>
+            </div>
+            <div class="contact-field">
+              <label>Mövzu</label>
+              <input type="text" placeholder="Mövzunu yazın..." />
+            </div>
+            <div class="contact-field">
+              <label>Mesajınız</label>
+              <textarea placeholder="Mesajınızı yazın..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="contact-submit-btn">Göndər</button>
+          </form>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ── DOCTORS PREVIEW ─────────────────────────────────── -->
-  <section class="about-doctors">
-    <div class="about-doctors-inner">
-      <div class="section-header">
-        <span class="section-tag">Həkimlərimiz</span>
-        <h2>Təcrübəli həkimlərimiz</h2>
-        <p class="section-desc">Sahələrində peşəkar həkimlərimiz sağlamlığınız üçün hər zaman yanınızdadır.</p>
-      </div>
-      <div class="about-doctors-grid">
-        <a href="#" class="doctor-card">
-          <div class="doctor-photo"><img src="uploads/doctors/jafar-ahmadli.jpg" alt="Dr. Cəfər Əhmədli" /></div>
-          <div class="doctor-info"><h3>Dr. Cəfər Əhmədli</h3><span class="doctor-specialty">Uroloq / Androloq</span></div>
-        </a>
-        <a href="#" class="doctor-card">
-          <div class="doctor-photo"><img src="uploads/doctors/munavvar-hasanova.jpg" alt="Dr. Münəvvər Həsənova" /></div>
-          <div class="doctor-info"><h3>Dr. Münəvvər Həsənova</h3><span class="doctor-specialty">Pediatr</span></div>
-        </a>
-        <a href="#" class="doctor-card">
-          <div class="doctor-photo"><img src="uploads/doctors/elkhan-aliyev.jpg" alt="Dr. Elxan Əliyev" /></div>
-          <div class="doctor-info"><h3>Dr. Elxan Əliyev</h3><span class="doctor-specialty">Terapevt</span></div>
-        </a>
-        <a href="#" class="doctor-card">
-          <div class="doctor-photo"><img src="uploads/doctors/rufat-jabbarli.jpg" alt="Dr. Rüfət Cabbarlı" /></div>
-          <div class="doctor-info"><h3>Dr. Rüfət Cabbarlı</h3><span class="doctor-specialty">Uzman Fizioterapevt</span></div>
-        </a>
-      </div>
-      <div class="about-doctors-cta">
-        <a href="doctors.html" class="doctors-all-btn">Bütün Həkimləri Gör &rarr;</a>
-      </div>
-    </div>
+  <!-- ── MAP ─────────────────────────────────────────────── -->
+  <section class="contact-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1520.5!2d49.837315!3d40.380123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDIyJzQ4LjQiTiA0OcKwNTAnMTQuMyJF!5e0!3m2!1saz!2saz!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
 
   <footer class="footer">
@@ -259,7 +243,26 @@
     <div class="footer-bottom"><p data-i18n-html="footer_copyright">&copy; 2024 Lafromed Healthcare. Butun huquqlar qorunur.</p></div>
   </footer>
 
-  <script src="script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
   <script src="i18n.js"></script>
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('.contact-submit-btn');
+        const original = btn.textContent;
+        btn.textContent = '✓ Mesajınız göndərildi!';
+        btn.style.background = '#059669';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.background = '';
+          btn.disabled = false;
+          contactForm.reset();
+        }, 3200);
+      });
+    }
+  </script>
 </body>
 </html>
